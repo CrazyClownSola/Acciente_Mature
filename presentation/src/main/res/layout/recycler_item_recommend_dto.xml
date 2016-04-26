@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_default_white"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+
+    <ImageView
+        android:id="@+id/id_image_view_item_recommend_app_icon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerVertical="true"
+        android:contentDescription="@null"
+        android:src="@drawable/default_icon"/>
+
+
+    <LinearLayout
+        android:id="@+id/id_include_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/id_btn_go_to_download"
+        android:layout_toRightOf="@+id/id_image_view_item_recommend_app_icon"
+        android:background="@color/color_default_white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/id_text_recommend_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:paddingLeft="5dp"
+            android:text="梦幻西游"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/id_include_item_dto_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/divider_inset_default_horizontal_line"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:showDividers="middle">
+
+
+                    <RatingBar
+                        android:id="@+id/id_rating_bar"
+                        style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:progressTint="@color/orange_salmon"
+                        android:rating="2.5"
+                        />
+
+                    <TextView
+                        android:id="@+id/id_text_recommend_item_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="229.32MB"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/id_text_recommend_item_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="5dp"
+                    android:text="《梦幻西游》手游正式来袭！"/>
+
+            </LinearLayout>
+
+            <include layout="@layout/layout_item_download_progress_layout"/>
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+    <!--<Button-->
+    <!--android:id="@+id/id_btn_go_to_download"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:text="下载"-->
+    <!--/>-->
+
+    <include
+        layout="@layout/button_circular_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"/>
+
+
+</RelativeLayout>

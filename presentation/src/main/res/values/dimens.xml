@@ -1,0 +1,10 @@
+<resources>
+
+    <!-- 这里适用于存放一些通用的距离大小 -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="cpb_stroke_width">4dp</dimen>
+
+
+</resources>

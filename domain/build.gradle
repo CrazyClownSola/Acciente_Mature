@@ -1,0 +1,24 @@
+//import com.sun.org.apache.xalan.internal.xsltc.cmdline.Compile
+
+apply plugin: 'java'
+apply plugin: 'me.tatarka.retrolambda'
+
+//虽然不是很确定这两个有什么用，但是不加这个，在run项目的时候会Crash
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+configurations {
+    provided
+}
+
+dependencies {
+//    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    def domainDependencies = rootProject.ext.appDependencies
+
+    provided domainDependencies.daggerCompiler
+
+    compile domainDependencies.dagger
+    compile domainDependencies.rxJava
+}
+

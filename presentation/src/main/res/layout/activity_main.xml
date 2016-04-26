@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.DemoActivity">
+
+    <com.dome.androidtools.view.circles.CircularProgressButton
+        android:id="@+id/id_btn_circular_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/cpb_white"
+        android:textSize="18sp"
+        app:cpb_colorProgress="@color/cpb_grey"
+        app:cpb_cornerRadius="48dp"
+        app:cpb_selectorComplete="@drawable/complete_state_selector"
+        app:cpb_selectorError="@drawable/error_state_selector"
+        app:cpb_selectorIdle="@drawable/idle_state_selector"
+        app:cpb_textComplete="完成"
+        app:cpb_textError="失败"
+        app:cpb_textIdle="下载"
+        />
+
+    <Button
+        android:id="@+id/id_btn_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请求访问"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/id_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:paddingEnd="10dp"
+        app:paddingStart="10dp"
+        />
+
+</LinearLayout>

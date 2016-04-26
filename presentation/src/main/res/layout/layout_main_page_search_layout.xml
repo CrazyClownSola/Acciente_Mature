@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/color_default_white"
+              android:divider="@drawable/divider_inset_default_horizontal_line"
+              android:orientation="horizontal"
+              android:showDividers="middle">
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:hint="@string/app_name"
+        android:inputType="text"
+        android:paddingLeft="5dp"
+        android:textColor="@color/color_default_black"
+        android:textColorHint="@color/color_default_gray"
+        android:textSize="18sp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:contentDescription="@null"
+        android:src="@drawable/icon_default_small"
+        />
+
+
+</LinearLayout>

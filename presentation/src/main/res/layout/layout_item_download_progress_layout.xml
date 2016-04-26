@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/id_include_download_progress"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    >
+
+    <TextView
+        android:id="@+id/id_text_view_download_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0KB/s"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/id_text_view_download_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="0MB/194.93MB"
+        android:textSize="16sp"
+        />
+
+    <ProgressBar
+        android:id="@+id/id_progress_bar_download_item"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_text_view_download_speed"
+        android:layout_marginTop="5dp"
+        android:max="100"
+        android:progress="50"
+        android:progressTint="@color/green_grass"
+        />
+
+</RelativeLayout>

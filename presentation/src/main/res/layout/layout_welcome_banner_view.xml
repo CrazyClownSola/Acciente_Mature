@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@drawable/welcome_big_default_banner"
+             android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/id_btn_welcome_skip_wait"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|top"
+        android:layout_margin="5dp"
+        android:background="@drawable/selector_btn_bg_transparent"
+        android:padding="10dp"
+        android:text="跳过"
+        android:textColor="@color/color_default_white"
+        android:textSize="16sp"
+        />
+
+</FrameLayout>

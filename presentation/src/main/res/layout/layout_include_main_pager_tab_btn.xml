@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="horizontal"
+              android:paddingBottom="5dp"
+              android:paddingTop="5dp"
+              app:layout_scrollFlags="scroll|enterAlways">
+
+    <TextView
+        android:id="@+id/id_btn_main_needed"
+        style="@style/Radio_Button_Default"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/default_recommend_tab_icon"
+        android:text="必备"
+        />
+
+    <TextView
+        android:id="@+id/id_btn_main_new_goods"
+        style="@style/Radio_Button_Default"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/default_recommend_tab_icon"
+        android:text="新品"
+        />
+
+    <TextView
+        android:id="@+id/id_btn_main_topic"
+        style="@style/Radio_Button_Default"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/default_recommend_tab_icon"
+        android:text="专题"
+        />
+
+    <TextView
+        android:id="@+id/id_btn_main_event"
+        style="@style/Radio_Button_Default"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/default_recommend_tab_icon"
+        android:text="活动"
+        />
+</LinearLayout>

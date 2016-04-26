@@ -1,0 +1,116 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
+
+android {
+
+    def config = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion config.getAt("androidCompileSdkVersion")
+    buildToolsVersion config.getAt("androidBuildToolsVersion")
+
+    defaultConfig {
+        applicationId "com.dome.appstore"
+        minSdkVersion config.getAt("androidMinSdkVersion")
+        targetSdkVersion config.getAt("androidTargetSdkVersion")
+        versionCode config.getAt("androidVersionCode")
+        versionName config.getAt("androidVersionName")
+    }
+
+    //修改打包签名的设置
+    if (project.hasProperty("MyProject.properties")) {
+        Properties props = new Properties()
+        props.load(new FileInputStream(
+                file(project.property("MyProject.properties"))))
+        // 用作签名设置的
+        signingConfigs {
+            release {
+                storeFile file(props['keystore'])
+                storePassword props['storePassword']
+                keyAlias props['keyAlias']
+                keyPassword props['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            applicationIdSuffix ".debug" //使得一台终端能够同时安装两个apk
+            zipAlignEnabled true
+            minifyEnabled false
+        }
+    }
+
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.each { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')
+                        && "release".equalsIgnoreCase(variant.buildType.name)) {
+                    //这里修改apk文件名
+                    def fileName = "bao_play_demo_${variant.buildType.name}_" +
+                            "${defaultConfig.versionCode}_" +
+                            "${releaseTime()}.apk"
+                    def dir = "release"
+                    File dirFile = new File(dir)
+                    if (!dirFile.exists()) {
+                        dirFile.mkdirs();
+                    }
+                    output.outputFile = new File(dir, fileName)
+                }
+            }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+def releaseTime() {
+    return new Date().format("yyyyMMdd_hhmmss")
+}
+
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
+        resourcePackageName android.defaultConfig.applicationId //对应多版本编译apk的时候applicationID会变的问题
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile project(':androidtools')
+    compile project(':data')
+    compile project(':domain')
+    compile project(':fix_container')
+
+    def dependencies = rootProject.ext.appDependencies
+    // AA 框架的引用
+    apt dependencies.androidannotations
+    compile dependencies.androidannotations_api
+    // Dagger2框架的引用
+    apt dependencies.daggerCompiler
+    compile dependencies.dagger
+    // rxJava 库包
+    compile dependencies.rxJava
+    compile dependencies.rxAndroid
+    // supportV7的包中的特有的一些控件
+    compile dependencies.recyclerView
+    compile dependencies.appcompat
+    compile dependencies.cardview
+    compile dependencies.design
+    // 个人撰写的关于RecyclerView的库包，还有待改进
+//    compile dependencies.sola_container
+
+    compile files('libs/universal-image-loader-1.9.5.jar')
+}

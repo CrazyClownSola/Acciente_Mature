@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/color_default_gray"
+             android:orientation="vertical">
+
+    <include layout="@layout/layout_welcome_init_view"/>
+
+
+    <ViewStub
+        android:id="@+id/id_view_stub_banner_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/layout_welcome_banner_view"
+        />
+
+</FrameLayout>

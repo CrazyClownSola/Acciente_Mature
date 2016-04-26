@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="string_html_str_item_text">%1$d、&lt;font color = #72C7D8>%2$s&lt;/font> - %3$s</string>
+
+</resources>

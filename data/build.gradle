@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+//调整编译环境需要用到的工具
+apply plugin: 'com.neenbedankt.android-apt'
+// java8 lambda的表达式
+apply plugin: 'me.tatarka.retrolambda'
+
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext");
+
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+
+    defaultConfig {
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+
+        versionCode globalConfiguration.getAt("androidVersionCode")
+        versionName globalConfiguration.getAt("androidVersionName")
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    //这段不能少，缺失这段可能会导致，编译是通过的，但是代码上会有error
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+//    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':domain')
+
+    testCompile 'junit:junit:4.12'
+
+    def dataDependencies = rootProject.ext.appDependencies
+    apt dataDependencies.daggerCompiler
+
+    compile dataDependencies.dagger
+    compile dataDependencies.retrofit
+    compile dataDependencies.gson
+    compile dataDependencies.rxJava
+    compile dataDependencies.retrofit_gson
+    compile dataDependencies.retrofit_adapter
+//    provided dataDependencies.javaxAnnotation
+//    compile dataDependencies.okHttp
+}
